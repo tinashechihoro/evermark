@@ -1,5 +1,6 @@
 from django.contrib.auth.models import User
 from django.db import models
+from django.utils.text import slugify
 
 
 class ProductImages(models.Model):
@@ -30,8 +31,14 @@ class Product(models.Model):
     price = models.DecimalField(max_digits=10, decimal_places=3)
     category = models.ForeignKey('ProductCategory', on_delete=models.SET_NULL, null=True)
     brand = models.ForeignKey('Brand', on_delete=models.SET_NULL, null=True)
+    slug = models.SlugField(blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+
+    def save(self, *args, **kwargs):
+        if not self.slug and self.name:
+            self.slug = slugify(self.name)
+        super(Product,self).save(*args, **kwargs)
 
     class Meta:
         verbose_name = 'Product'
