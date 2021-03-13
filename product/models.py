@@ -17,6 +17,7 @@ class Product(models.Model):
     condition = models.CharField(max_length=200, choices=CONDITION_CHOICES)
     price = models.DecimalField(max_digits=10, decimal_places=3)
     category = models.ForeignKey('ProductCategory', on_delete=models.SET_NULL, null=True)
+    brand = models.ForeignKey('Brand', on_delete=models.SET_NULL, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
