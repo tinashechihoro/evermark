@@ -16,9 +16,13 @@ class Product(models.Model):
     description = models.TextField(max_length=500)
     condition = models.CharField(max_length=200, choices=CONDITION_CHOICES)
     price = models.DecimalField(max_digits=10, decimal_places=3)
-    category = models.ForeignKey('Category', on_delete=models.SET_NULL, null=True)
+    category = models.ForeignKey('ProductCategory', on_delete=models.SET_NULL, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        verbose_name = 'Product'
+        verbose_name_plural = 'Products'
 
     def __str__(self):
         return self.name
@@ -31,5 +35,38 @@ class ProductCategory(models.Model):
     category_name = models.CharField(max_length=200)
     image = models.ImageField(upload_to='products_images/', blank=True, null=True)
 
+    class Meta:
+        verbose_name = 'Category'
+        verbose_name_plural = 'Categories'
+
     def __str__(self):
         return self.category_name
+
+class Brand(models.Model):
+    """
+    Brand
+    """
+    brand_name = models.CharField(max_length=200)
+
+
+    class Meta:
+        verbose_name = 'Brand'
+        verbose_name_plural = 'Brands'
+
+    def __str__(self):
+        return self.brand_name
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
