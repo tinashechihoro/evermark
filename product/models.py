@@ -28,8 +28,8 @@ class ProductCategory(models.Model):
     """
     Product Category
     """
-    name = models.CharField(max_length=200)
+    category_name = models.CharField(max_length=200)
     image = models.ImageField(upload_to='products_images/', blank=True, null=True)
 
     def __str__(self):
-        return self.name
+        return self.category_name
