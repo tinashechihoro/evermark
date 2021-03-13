@@ -2,6 +2,14 @@ from django.contrib.auth.models import User
 from django.db import models
 
 
+class ProductImages(models.Model):
+    product = models.ForeignKey('Product', models.CASCADE)
+    image = models.ImageField(upload_to='products_images/', blank=True, null=True)
+
+    def __str__(self):
+        return self.product
+
+
 class Product(models.Model):
     """
     Contains all product information
@@ -43,12 +51,12 @@ class ProductCategory(models.Model):
     def __str__(self):
         return self.category_name
 
+
 class Brand(models.Model):
     """
     Brand
     """
     brand_name = models.CharField(max_length=200)
-
 
     class Meta:
         verbose_name = 'Brand'
@@ -56,18 +64,3 @@ class Brand(models.Model):
 
     def __str__(self):
         return self.brand_name
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
