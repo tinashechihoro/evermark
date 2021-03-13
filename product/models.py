@@ -6,6 +6,10 @@ class ProductImages(models.Model):
     product = models.ForeignKey('Product', models.CASCADE)
     image = models.ImageField(upload_to='products_images/', blank=True, null=True)
 
+    class Meta:
+        verbose_name = 'Product Image'
+        verbose_name_plural = 'Product Images'
+
     def __str__(self):
         return self.product
 
