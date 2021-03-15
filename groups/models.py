@@ -26,9 +26,10 @@ class Message(models.Model):
     def __str__(self):
         return self.text_message
 
+
 class MessegeComment(models.Model):
-    message =  models.ForeignKey(Message,on_delete=models.DO_NOTHING)
-    comment =  models.TextField()
+    message = models.ForeignKey(Message, on_delete=models.DO_NOTHING)
+    comment = models.TextField()
 
     def __str__(self):
         return self.comment
