@@ -26,6 +26,7 @@ INSTALLED_APPS = [
 
     'product',
     'groups',
+    'advert',
 ]
 
 MIDDLEWARE = [

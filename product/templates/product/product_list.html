@@ -1,17 +1,12 @@
-<!--
-Author: W3layouts
-Author URL: http://w3layouts.com
-License: Creative Commons Attribution 3.0 Unported
-License URL: http://creativecommons.org/licenses/by/3.0/
--->
+{% load static  %}
 <!DOCTYPE html>
 <html>
 <head>
-<title>Resale a Business Category Flat Bootstrap Responsive Website Template | All Classifieds :: w3layouts</title>
-<link rel="stylesheet" href="css/bootstrap.min.css">
-<link rel="stylesheet" href="css/bootstrap-select.css">
-<link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
-<link rel="stylesheet" type="text/css" href="css/jquery-ui1.css">
+<title>Evermark</title>
+<link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+<link rel="stylesheet" href="{% static 'css/bootstrap-select.css' %}">
+<link href="{% static 'css/style.css' %}" rel="stylesheet" type="text/css" media="all" />
+<link rel="stylesheet" type="text/css" href="{% static 'css/jquery-ui1.css' %}">
 <!-- for-mobile-apps -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -24,11 +19,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <link href='//fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic' rel='stylesheet' type='text/css'>
 <!--//fonts-->	
 <!-- js -->
-<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript" src="{% static 'js/jquery.min.js' %}"></script>
 <!-- js -->
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-<script src="js/bootstrap.min.js"></script>
-<script src="js/bootstrap-select.js"></script>
+<script src="{% static 'js/bootstrap.min.js' %}"></script>
+<script src="{% static 'js/bootstrap-select.js' %}"></script>
 <script>
   $(document).ready(function () {
     var mySelect = $('#first-disabled2');
@@ -49,17 +44,17 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     });
   });
 </script>
-<script type="text/javascript" src="js/jquery.leanModal.min.js"></script>
-<link href="css/jquery.uls.css" rel="stylesheet"/>
-<link href="css/jquery.uls.grid.css" rel="stylesheet"/>
-<link href="css/jquery.uls.lcd.css" rel="stylesheet"/>
+<script type="text/javascript" src="{% static 'js/jquery.leanModal.min.js' %}"></script>
+<link href="{% static 'css/jquery.uls.css' %}" rel="stylesheet"/>
+<link href="{% static 'css/jquery.uls.grid.css' %}" rel="stylesheet"/>
+<link href="{% static 'css/jquery.uls.lcd.css' %}" rel="stylesheet"/>
 <!-- Source -->
-<script src="js/jquery.uls.data.js"></script>
-<script src="js/jquery.uls.data.utils.js"></script>
-<script src="js/jquery.uls.lcd.js"></script>
-<script src="js/jquery.uls.languagefilter.js"></script>
-<script src="js/jquery.uls.regionfilter.js"></script>
-<script src="js/jquery.uls.core.js"></script>
+<script src="{% static 'js/jquery.uls.data.js' %}"></script>
+<script src="{% static 'js/jquery.uls.data.utils.js' %}"></script>
+<script src="{% static 'js/jquery.uls.lcd.js' %}"></script>
+<script src="{% static 'js/jquery.uls.languagefilter.js' %}"></script>
+<script src="{% static 'js/jquery.uls.regionfilter.js' %}"></script>
+<script src="{% static 'js/jquery.uls.core.js' %}"></script>
 <script>
 			$( document ).ready( function() {
 				$( '.uls-trigger' ).uls( {
@@ -71,7 +66,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				} );
 			} );
 		</script>
-    <script src="js/tabs.js"></script>
+    <script src="{% static 'js/tabs.js' %}"></script>
 	
 <script type="text/javascript">
 $(document).ready(function () {    
@@ -968,7 +963,7 @@ var elem=$('#container ul');
 									</li>			
 							</ul>
 							<!---->
-							<script type="text/javascript" src="js/jquery-ui.js"></script>
+							<script type="text/javascript" src="{% static 'js/jquery-ui.js' %}"></script>
 							<script type='text/javascript'>//<![CDATA[ 
 							$(window).load(function(){
 							 $( "#slider-range" ).slider({
@@ -1070,7 +1065,7 @@ var elem=$('#container ul');
 							<ul class="list">
 								<a href="single.html">
 									<li>
-									<img src="images/m1.jpg" title="" alt="" />
+									<img src="{% static 'images/m1.jpg' %}" title="" alt="" />
 									<section class="list-left">
 									<h5 class="title">There are many variations of passages of Lorem Ipsum</h5>
 									<span class="adprice">$290</span>
@@ -1085,7 +1080,7 @@ var elem=$('#container ul');
 								</a>
 								<a href="single.html">
 									<li>
-									<img src="images/m2.jpg" title="" alt="" />
+									<img src="{% static 'images/m2.jpg' %}" title="" alt="" />
 									<section class="list-left">
 									<h5 class="title">It is a long established fact that a reader long established</h5>
 									<span class="adprice">$310</span>
