@@ -34,6 +34,7 @@ class Product(models.Model):
     slug = models.SlugField(blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+    city =  models.CharField(max_length=200,blank=True,null=True)
 
     def save(self, *args, **kwargs):
         if not self.slug and self.name:
