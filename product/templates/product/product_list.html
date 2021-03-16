@@ -326,7 +326,7 @@ var elem=$('#container ul');
                                         <div class="clearfix"></div>
                                         <ul class="list">
                                             {% for product in products %}
-                                            <a href="single.html">
+                                            <a href="{% url 'product:product_detail' product.slug  %}">
                                                 <li>
                                                     <img src="images/m13.jpg" title="" alt=""/>
                                                     <section class="list-left">

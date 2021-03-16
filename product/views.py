@@ -13,8 +13,8 @@ def product_list(request):
     return render(request, 'product/product_list.html', context)
 
 
-def product_detail(request, id):
-    product = Product.objects.get(id=id)
+def product_detail(request, product_slug):
+    product = Product.objects.get(slug=product_slug)
     context = {
         'product': product
 

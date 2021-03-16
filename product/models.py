@@ -34,12 +34,12 @@ class Product(models.Model):
     slug = models.SlugField(blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
-    city =  models.CharField(max_length=200,blank=True,null=True)
+    city = models.CharField(max_length=200, blank=True, null=True)
 
     def save(self, *args, **kwargs):
         if not self.slug and self.name:
             self.slug = slugify(self.name)
-        super(Product,self).save(*args, **kwargs)
+        super(Product, self).save(*args, **kwargs)
 
     class Meta:
         verbose_name = 'Product'
@@ -55,13 +55,16 @@ class ProductCategory(models.Model):
     """
     category_name = models.CharField(max_length=200)
     image = models.ImageField(upload_to='products_images/', blank=True, null=True)
-    slug =  models.SlugField(max_length=200,blank=True,null=True)
-
-
+    slug = models.SlugField(max_length=200, blank=True, null=True)
 
     class Meta:
-        verbose_name = 'Category'
-        verbose_name_plural = 'Categories'
+        verbose_name = 'Product Category'
+        verbose_name_plural = 'Product Categories'
+
+    def save(self, *args, **kwargs):
+        if not self.slug and  self.category_name:
+            self.slug = slugify(self.category_name)
+            super(ProductCategory,self).save(*args, **kwargs)
 
     def __str__(self):
         return self.category_name
@@ -77,6 +80,11 @@ class Brand(models.Model):
     class Meta:
         verbose_name = 'Brand'
         verbose_name_plural = 'Brands'
+
+    def save(self, *args, **kwargs):
+        if not self.slug and not self.brand_name:
+            self.slug = slugify(self.brand_name)
+            super(Brand, self).save(*args, **kwargs)
 
     def __str__(self):
         return self.brand_name

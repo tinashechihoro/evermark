@@ -1,5 +1,6 @@
 from django.contrib.auth.models import User
 from django.db import models
+from django.utils.text import slugify
 
 
 class Advert(models.Model):
@@ -12,7 +13,7 @@ class Advert(models.Model):
         ('Monthly', 'Monthly'),
 
     )
-    user = models.OneToOneField(User,
+    user = models.ForeignKey(User,
                                 on_delete=models.DO_NOTHING)
     title = models.CharField(max_length=200)
     text = models.TextField()
@@ -25,6 +26,11 @@ class Advert(models.Model):
                                                   choices=ADVERT_SUBSCRIPTION_CHOICES)
 
     slug = models.SlugField(blank=True, null=True, max_length=200)
+
+    def save(self, *args, **kwargs):
+        if not self.slug and self.title:
+            self.slug = slugify(self.title)
+        super(Advert, self).save(*args, **kwargs)
 
     def __str__(self):
         return self.title
