@@ -55,6 +55,9 @@ class ProductCategory(models.Model):
     """
     category_name = models.CharField(max_length=200)
     image = models.ImageField(upload_to='products_images/', blank=True, null=True)
+    slug =  models.SlugField(max_length=200,blank=True,null=True)
+
+
 
     class Meta:
         verbose_name = 'Category'
@@ -69,6 +72,7 @@ class Brand(models.Model):
     Brand
     """
     brand_name = models.CharField(max_length=200)
+    slug = models.SlugField(blank=True, null=True, max_length=200)
 
     class Meta:
         verbose_name = 'Brand'

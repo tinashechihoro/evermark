@@ -8,9 +8,8 @@ class Advert(models.Model):
         ('Stopped', 'Stopped'),
     )
     ADVERT_SUBSCRIPTION_CHOICES = (
-        ('Week','Week'),
-        ('Monthly','Monthly'),
-
+        ('Week', 'Week'),
+        ('Monthly', 'Monthly'),
 
     )
     user = models.OneToOneField(User,
@@ -24,6 +23,8 @@ class Advert(models.Model):
                                              choices=ADVERT_STATUS_CHOICES)
     advert_active_subscription = models.CharField(max_length=10,
                                                   choices=ADVERT_SUBSCRIPTION_CHOICES)
+
+    slug = models.SlugField(blank=True, null=True, max_length=200)
 
     def __str__(self):
         return self.title
