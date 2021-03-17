@@ -27,6 +27,7 @@ class Product(models.Model):
     owner = models.ForeignKey(User, on_delete=models.CASCADE)
     name = models.CharField(max_length=200)
     description = models.TextField(max_length=500)
+    image = models.ImageField(upload_to='product_image/', blank=True, null=True)
     condition = models.CharField(max_length=200, choices=CONDITION_CHOICES)
     price = models.DecimalField(max_digits=10, decimal_places=3)
     category = models.ForeignKey('ProductCategory', on_delete=models.SET_NULL, null=True)
