@@ -1,5 +1,6 @@
 from django.contrib.auth.models import User
 from django.db import models
+from django.db.models.signals import pre_save
 from django.utils.text import slugify
 
 
@@ -50,6 +51,14 @@ class Product(models.Model):
         return self.name
 
 
+def product_pre_save_receiver(sender, instance, *args, **kwargs):
+    if not instance.slug:
+        instance.slug = slugify(instance.name)
+
+
+pre_save.connect(product_pre_save_receiver, sender=Product)
+
+
 class ProductCategory(models.Model):
     """
     Product Category
@@ -62,13 +71,16 @@ class ProductCategory(models.Model):
         verbose_name = 'Product Category'
         verbose_name_plural = 'Product Categories'
 
-    def save(self, *args, **kwargs):
-        if not self.slug and  self.category_name:
-            self.slug = slugify(self.category_name)
-            super(ProductCategory,self).save(*args, **kwargs)
-
     def __str__(self):
         return self.category_name
+
+
+def product_category_pre_save_receiver(sender, instance, *args, **kwargs):
+    if not instance.slug:
+        instance.slug = slugify(instance.title)
+
+
+pre_save.connect(product_category_pre_save_receiver, sender=ProductCategory)
 
 
 class Brand(models.Model):
@@ -89,3 +101,11 @@ class Brand(models.Model):
 
     def __str__(self):
         return self.brand_name
+
+
+def brand_category_pre_save_receiver(sender, instance, *args, **kwargs):
+    if not instance.slug:
+        instance.slug = slugify(instance.brand_name)
+
+
+pre_save.connect(brand_category_pre_save_receiver, sender=Brand)

@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.core.paginator import Paginator
 from django.db.models import Count
+from  django.db.models import Q
 from .models import Product, ProductCategory, ProductImages
 
 
@@ -11,6 +12,8 @@ def product_list(request):
     paginator = Paginator(products, 10)
     page = request.GET.get('page')
     products = paginator.get_page(page)
+    search_query =  request.GET.get('q')
+    print(search_query)
 
     product_category = ProductCategory.objects.all
     context = {
